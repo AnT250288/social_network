@@ -5,34 +5,20 @@ import {Navbar} from "./componens/Navbar/Navbar";
 import {Profile} from "./componens/Profile/Profile";
 import {Dialogs} from "./componens/Dialogs/Dialogs";
 import {BrowserRouter, Route} from 'react-router-dom';
-import {DialogItem} from "./componens/Dialogs/DialogItem/DialogItem";
+import {RootStateType} from "./index";
 
-const App = () => {
-    let dialogs = [
-        {id: 1, name: 'Dimych'},
-        {id: 2, name: 'Andrey'},
-        {id: 3, name: 'Sveta'},
-        {id: 4, name: 'Sasha'},
-        {id: 5, name: 'Victor'},
-        {id: 6, name: 'Valera'}
-    ]
-    let messages = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'Hello!'},
-        {id: 3, message: 'How is your studies?'},
-        {id: 4, message: 'Yo!'}
-    ]
+type PropsType = {
+    state: RootStateType
+}
+const App = (props: PropsType) => {
     return (
         <BrowserRouter>
             <div className={'app-wrapper'}>
                 <Header/>
                 <Navbar/>
                 <div className={'app-wrapper-content'}>
-                    {/*<Route path={'/dialogs'} component={Dialogs}/>
-                    <Route path={'/profile'} component={Profile}/>*/}
-
-                    <Route path={'/dialogs'} render={ () => <Dialogs dialog={dialogs} message={messages}/> } />
-                    <Route path={'/profile'} render={ () => <Profile/>}/>
+                    <Route path={'/dialogs'} render={ () => <Dialogs dialogs={props.state.dialogsPage.dialogs} messages={props.state.dialogsPage.messages}/> } />
+                    <Route path={'/profile'} render={ () => <Profile posts = {props.state.profilePage.posts}/>}/>
                 </div>
             </div>
         </BrowserRouter>

@@ -3,35 +3,41 @@ import './App.css';
 import {Header} from "./componens/Header/Header";
 import {Navbar} from "./componens/Navbar/Navbar";
 import {Profile} from "./componens/Profile/Profile";
-import {Dialogs} from "./componens/Dialogs/Dialogs";
 import {BrowserRouter, Route} from 'react-router-dom';
-import {RootStateType} from "./redux/state";
+import {DialogsContainer} from "./componens/Dialogs/DialogsContainer";
+import {UsersContainer} from "./componens/Users/UsersContainer";
 
 
-export type PropsType = {
-    state: RootStateType
-    addPost: (postMessage?: string) => void
-    updateNewPostText: (newText?: string) => void
-}
+const App: React.FC = () => {
 
-const App = (props: PropsType) => {
+    // const state = props.store.getState();
+
     return (
         <BrowserRouter>
             <div className={'app-wrapper'}>
                 <Header/>
                 <Navbar/>
                 <div className={'app-wrapper-content'}>
-                    <Route path={'/dialogs'} render={() => <Dialogs dialogs={props.state.dialogsPage.dialogs}
-                                                                    messages={props.state.dialogsPage.messages}/>}/>
-                    <Route path={'/profile'} render={() => <Profile posts={props.state.profilePage.posts}
-                                                                    addPost={props.addPost}
-                                                                    newPostText={props.state.profilePage.newPostText}
-                                                                    updateNewPostText={props.updateNewPostText}
-                    />}/>
+                    <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
+                    <Route path={'/profile'} render={() => <Profile/>}/>
+                    <Route path={'/users'} render={() => <UsersContainer />}/>
                 </div>
             </div>
         </BrowserRouter>
     );
+}
+
+{/*dialogs={state.dialogsPage.dialogs}
+                                                                             messages={state.dialogsPage.messages}
+                                                                             dispatch={props.dispatch}
+                                                                             newTextMessage={state.dialogsPage.newTextMessage}*/
+}
+
+
+{/*store={props.store}
+                                                                    posts={props.store.getState().profilePage.posts}
+                                                                    dispatch={props.dispatch}
+                                                                    newPostText={props.store.getState().profilePage.newPostText}*/
 }
 
 export default App;

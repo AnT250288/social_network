@@ -1,25 +1,19 @@
 import React from "react";
-import s from './Profile.module.css';
-import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {PostType} from "../../redux/state";
+import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
-type PropsType ={
-    posts: Array<PostType>
-    addPost: (postMessage?: string) => void
-    newPostText?: string
-    updateNewPostText: (newText?: string) => void
+type PropsType = {
+    // posts: Array<PostsType>
+    // newPostText: string
+    // dispatch: (action: ActionsType) => void
+    // store: AppStoreType
 }
 
-export const Profile = (props: PropsType) => {
+export const Profile = () => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts = {props.posts}
-                     addPost ={props.addPost}
-                     newPostText = {props.newPostText}
-                     updateNewPostText = {props.updateNewPostText}
-            />
+            <MyPostsContainer/>
         </div>
     )
 }

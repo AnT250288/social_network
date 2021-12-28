@@ -7,7 +7,7 @@ export const ProfileInfo = () => {
         <div>
             <div>
                 <img
-                    src={'https://cdn.wccftech.com/wp-content/uploads/2020/09/WCCFgenshinimpact9.jpg'}></img>
+                    src={'https://uploadstatic-sea.mihoyo.com/contentweb/20211214/2021121416202155278.jpg'}></img>
             </div>
             <div className={s.descriptionBlock}>
                 ava + description

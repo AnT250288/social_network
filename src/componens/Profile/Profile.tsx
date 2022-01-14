@@ -1,6 +1,7 @@
 import React from "react";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
+import {ProfileContainerPropsType} from "./ProfileContainer";
 
 type PropsType = {
     // posts: Array<PostsType>
@@ -9,10 +10,11 @@ type PropsType = {
     // store: AppStoreType
 }
 
-export const Profile = () => {
+export const Profile = (props:ProfileContainerPropsType) => {
+
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo {...props} />
             <MyPostsContainer/>
         </div>
     )

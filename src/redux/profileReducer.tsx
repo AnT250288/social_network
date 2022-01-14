@@ -2,11 +2,14 @@ import {v1} from "uuid";
 import React from "react";
 import {ActionsType} from "./reduxStore";
 
-
-export type ProfilePageType = {
-    posts: Array<PostType>
-    newPostText: string
+export type UserProfileType = {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    photos: { small: string | null, large: string | null }
 }
+
 export type PostType = {
     id: string
     message: string
@@ -25,9 +28,17 @@ export const updateNewPostMessageActionCreator = (newPostText: string) => {
     } as const
 }
 
+export const setUserProfile = (profile: UserProfileType) => {
+    return {
+        type: "SET-USER-PROFILE",
+        profile
+    } as const
+}
+
 export type InitialStateProfileReducerType = {
     posts: Array<PostType>
     newPostText: string
+    profile: UserProfileType
 }
 
 const initialState: InitialStateProfileReducerType = {
@@ -35,10 +46,17 @@ const initialState: InitialStateProfileReducerType = {
         {id: v1(), message: 'Hi, how are you?', likesCount: 0},
         {id: v1(), message: 'it\'s my first post', likesCount: 12}
     ],
-    newPostText: ""
+    newPostText: "",
+    profile: {
+        fullName: "",
+        lookingForAJob: true,
+        lookingForAJobDescription: '',
+        userId: 0,
+        photos: {small: '', large: null}
+    }
 }
 
-export const profileReducer = (state = initialState, action: ActionsType): ProfilePageType => {
+export const profileReducer = (state: InitialStateProfileReducerType = initialState, action: ActionsType): InitialStateProfileReducerType => {
     switch (action.type) {
         case "ADD-POST": {
             const newPost: PostType = {
@@ -57,6 +75,11 @@ export const profileReducer = (state = initialState, action: ActionsType): Profi
             return {
                 ...state,
                 newPostText: action.newPostText
+            }
+        }
+        case "SET-USER-PROFILE": {
+            return {
+                ...state, profile: action.profile
             }
         }
         default:

@@ -12,10 +12,10 @@ export const ProfileInfo = (props:ProfileContainerPropsType) => {
     return (
         <div>
             <div>
-                <img src={'https://uploadstatic-sea.mihoyo.com/contentweb/20211214/2021121416202155278.jpg'}/>
+                <img src={'https://uploadstatic-sea.mihoyo.com/contentweb/20211214/2021121416202155278.jpg'} alt={"mainWorkSpace"}/>
             </div>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto}/>
+                <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto} alt={"userPhoto"}/>
                 ava + description
             </div>
         </div>

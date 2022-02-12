@@ -6,13 +6,12 @@ import userPhoto from "../../assets/images/user.png"
 
 export const FUsers = (props: UsersPropsType) => {
 
-    React.useEffect(() => {
+    /*React.useEffect(() => {
         axios.get("https://social-network.samuraijs.com/api/1.0/users")
             .then(response => {
-                debugger
                 props.setUsers(response.data.items)
             })
-    }, [])
+    }, [])*/
 
     /* React.useEffect(() => {
          props.setUsers([
@@ -69,7 +68,7 @@ export const FUsers = (props: UsersPropsType) => {
                 <div>
                     <img src={user.photos.small != null ? user.photos.small : userPhoto} className={s.usersPhoto}/>
                 </div>
-                <div>
+                {/*       <div>
                     {user.followed
                         ? <button onClick={() => {
                             props.unFollow(user.id)
@@ -77,7 +76,7 @@ export const FUsers = (props: UsersPropsType) => {
                         : <button onClick={() => {
                             props.follow(user.id)
                         }}>Follow</button>}
-                </div>
+                </div>*/}
             </span>
                         <span>
                 <span>

@@ -12,7 +12,7 @@ export const DialogItem = (props: DialogItemType) => {
     return (
         <div className={s.dialog + ' ' + s.active}>
             <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
-            <img src={props.avatar}/>
+            <img src={props.avatar} alt={'avatarImg'}/>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import {v1} from "uuid";
 import {addPostActionCreator, profileReducer, updateNewPostMessageActionCreator} from "./profileReducer";
 import {addMessageActionCreator, dialogReducer, updateNewMessageActionCreator} from "./dialogReducer";
-import {follow, unFollow} from "./usersReducer";
+import {followSuccess, unFollowSuccess} from "./usersReducer";
 /*
 
 type StoreType = {

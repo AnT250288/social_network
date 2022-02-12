@@ -1,6 +1,6 @@
 import {v1} from "uuid";
-import React from "react";
 import {ActionsType} from "./reduxStore";
+import {usersAPI} from "../api/api";
 
 export type UserProfileType = {
     userId: number
@@ -85,5 +85,11 @@ export const profileReducer = (state: InitialStateProfileReducerType = initialSt
         default:
             return state
     }
+}
 
+export const getUserProfile = (userId: number | string) => (dispatch: any) => {
+    usersAPI.getProfile(userId)
+        .then(response => {
+            dispatch(setUserProfile(response.data));
+        });
 }

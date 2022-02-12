@@ -1,4 +1,4 @@
-import {combineReducers, createStore, Store} from "redux";
+import {applyMiddleware, combineReducers, createStore, Store} from "redux";
 import {
     addPostActionCreator,
     profileReducer,
@@ -7,29 +7,34 @@ import {
 } from "./profileReducer";
 import {addMessageActionCreator, dialogReducer, updateNewMessageActionCreator} from "./dialogReducer";
 import {
-    follow,
+    followSuccess,
     setCurrentPage,
     setUsers,
     setTotalUsersCount,
     setIsFetching,
-    unFollow,
-    usersReducer
+    unFollowSuccess,
+    usersReducer,
+    setFollowing
 } from "./usersReducer";
 import {authReducer, setAuthUserData} from "./authReducer";
+import thunkMiddleware from "redux-thunk"
+
 
 export type ActionsType =
     ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof updateNewPostMessageActionCreator>
     | ReturnType<typeof addMessageActionCreator>
     | ReturnType<typeof updateNewMessageActionCreator>
-    | ReturnType<typeof follow>
-    | ReturnType<typeof unFollow>
+    | ReturnType<typeof followSuccess>
+    | ReturnType<typeof unFollowSuccess>
     | ReturnType<typeof setUsers>
     | ReturnType<typeof setCurrentPage>
     | ReturnType<typeof setTotalUsersCount>
     | ReturnType<typeof setIsFetching>
     | ReturnType<typeof setUserProfile>
+    | ReturnType<typeof setFollowing>
     | ReturnType<typeof setAuthUserData>
+
 
 const rootReducer = combineReducers({
     profilePage: profileReducer,
@@ -44,4 +49,4 @@ export type AppStateType = ReturnType<typeof rootReducer>
 class AppStoreType {
 }
 
-export const store: Store & AppStoreType = createStore(rootReducer)
+export const store: Store & AppStoreType = createStore(rootReducer, applyMiddleware(thunkMiddleware))

@@ -10,8 +10,6 @@ import HeaderContainer from "./componens/Header/HeaderContainer";
 
 const App: React.FC = () => {
 
-    // const state = props.store.getState();
-
     return (
 
         <div className={'app-wrapper'}>

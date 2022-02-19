@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import {Navbar} from "./componens/Navbar/Navbar";
 import {Route} from 'react-router-dom';
-import {DialogsContainer} from "./componens/Dialogs/DialogsContainer";
-import {UsersContainer} from "./componens/Users/UsersContainer";
+import DialogsContainer from "./componens/Dialogs/DialogsContainer";
+import UsersContainer from "./componens/Users/UsersContainer";
 import ProfileContainer from "./componens/Profile/ProfileContainer";
 import HeaderContainer from "./componens/Header/HeaderContainer";
+import {Login} from "./componens/login/Login";
 
 
 const App: React.FC = () => {
@@ -19,23 +20,11 @@ const App: React.FC = () => {
                 <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
                 <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
                 <Route path={'/users'} render={() => <UsersContainer/>}/>
+                <Route path={'/login'} render={() => <Login/>}/>
             </div>
         </div>
 
     );
-}
-
-{/*dialogs={state.dialogsPage.dialogs}
-                                                                             messages={state.dialogsPage.messages}
-                                                                             dispatch={props.dispatch}
-                                                                             newTextMessage={state.dialogsPage.newTextMessage}*/
-}
-
-
-{/*store={props.store}
-                                                                    posts={props.store.getState().profilePage.posts}
-                                                                    dispatch={props.dispatch}
-                                                                    newPostText={props.store.getState().profilePage.newPostText}*/
 }
 
 export default App;

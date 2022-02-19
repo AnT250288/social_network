@@ -4,7 +4,6 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {DialogReducerInitialStateType} from "../../redux/dialogReducer";
 
-
 type PropsType = {
     dialogsPage: DialogReducerInitialStateType
     updateNewMessage: (text: string) => void

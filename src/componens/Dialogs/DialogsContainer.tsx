@@ -5,7 +5,9 @@ import {
     DialogReducerInitialStateType,
     updateNewMessageActionCreator
 } from "../../redux/dialogReducer";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
+import React from "react";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type mapStateToPropsType = {
     dialogsPage: DialogReducerInitialStateType
@@ -18,7 +20,7 @@ type mapDispatchToPropsType = {
 
 const mapStateToProps = (state: mapStateToPropsType): mapStateToPropsType => {
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
     }
 }
 
@@ -34,8 +36,15 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
         }
     }
 }
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs)
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+/*
+let AuthRedirectComponent = withAuthRedirect(Dialogs)
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
+*/
 
 // type PropsType = {
 //     dialogs: Array<DialogsType>
